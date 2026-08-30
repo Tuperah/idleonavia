@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDLEON</title>
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/skillicon0-249.css">
+    <link rel="stylesheet" href="/src/styles/skillicon250-499.css">
+    <link rel="stylesheet" href="/src/styles/skillicon500-689.css">
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="overlay" id="overlay"></div>
+    <nav class="sidebar" id="sidebar">
+        <h2>IDLEON</h2>
+        <ul class="nav-menu">
+            <li class="nav-item active" data-page="weekly-boss">
+                <span>每周BOSS</span>
+            </li>
+            <li class="nav-item" data-page="spike-display">
+                <span>尖刺预测</span>
+            </li>
+            <li class="nav-item" data-page="world-map">
+                <span>世界地图</span>
+            </li>
+            <li class="nav-item" data-page="talent-tool">
+                <span>天赋查询</span>
+            </li>
+            <li class="nav-item" data-page="pet-market">
+                <span>钻石预测</span>
+            </li>
+            <li class="nav-item">
+                <a href="https://codepen.io/Tuperah/full/VYmZpov" target="_top">物品查询</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div id="weekly-boss" class="page active">
+            <div class="page-content-wrapper">
+                <div class="boss-container">
+                    <h1 class="boss-title">每周BOSS</h1>
+                    <div class="boss-help-text" id="helpText">看不懂，快点这里</div>
+
+                    <div class="boss-week-selector">
+                        <label for="weekSelect">选择期数：</label>
+                        <select id="weekSelect" class="boss-select">
+                        </select>
+                        <div class="boss-11c-toggle">
+                            <label class="boss-11c-switch">
+                                <input type="checkbox" id="boss11cToggle" checked>
+                                <span class="boss-11c-slider"></span>
+                            </label>
+                            <span class="boss-11c-label">是否11个角色</span>
+                        </div>
+                    </div>
+
+                    <div class="boss-name" id="bossName">
+                    </div>
+
+                    <div class="boss-character-requirements">
+                        <h2>角色需求</h2>
+                        <h4 class="boss-warning">所列数值为及格线，数字为第x个角色<h4>
+                        <div class="boss-requirements-list">
+                            <div class="boss-requirement" id="boss-reqAll">-</div>
+                        </div>
+                    </div>
+
+                    <div class="boss-help-text" id="boss11cHint"></div>
+
+                    <div class="boss-cards-container">
+                        <div class="boss-card">
+                            <h2>💀 5 Skulls Run(春分五杀挑战、每周优先) 💀</h2>
+                            <div class="boss-card-content" id="boss-skullsRun">
+                                Select a week to view details
+                            </div>
+                        </div>
+
+                        <div class="boss-card">
+                            <h2>Misc + Trophy Run(奖杯及BUFF获取)</h2>
+                            <div class="boss-trophies-count" id="trophiesCount">🏆 0</div>
+                            <div class="boss-card-content" id="boss-miscRun">
+                                Select a week to view details
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="spike-display" class="page">
+            <div class="page-content-wrapper">
+                <div class="spike-container">
+                    <h1 class="spike-title">尖刺预测</h1>
+
+                    <div class="spike-info-panel">
+                        <p>当前时间：<span id="current-time"></span></p>
+                        <p>预测时间：<span id="prediction-time"></span></p>
+                        <p>预测回合：<span id="current-round">1</span>/15</p>
+                    </div>
+
+                    <div style="margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 0; width: 100%;">
+                        <button id="non-mobile-btn" class="spike-toggle-button spike-group-btn left-btn">非移动端</button>
+                        <button id="mobile-btn" class="spike-toggle-button spike-group-btn right-btn">移动端</button>
+                    </div>
+
+                    <div class="spike-tabs">
+                        <div class="spike-tab-header">
+                            <button class="spike-tab-btn active" data-tab="spike-tab">尖刺分布图</button>
+                            <button class="spike-tab-btn" data-tab="lazy-tab">我很懒，不想看</button>
+                        </div>
+
+                        <div class="spike-tab-content">
+                            <div id="spike-tab" class="spike-tab-pane active">
+                                <div class="spike-time-display">
+                                    尖刺分布图
+                                </div>
+
+                                <div class="spike-display-container">
+                                    <div class="spike-row">
+                                        <div class="spike-cell spike-inactive" id="top-0">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-1">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-2">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-3">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-4">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-5">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-6">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-7">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-8">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-9">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-10">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-11">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-12">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-13">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-14">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-15">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-16">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-17">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-18">_</div>
+                                        <div class="spike-cell spike-inactive" id="top-19">_</div>
+                                    </div>
+
+                                    <div class="spike-row">
+                                        <div class="spike-cell spike-inactive" id="mid-0">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-1">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-2">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-3">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-4">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-5">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-6">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-7">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-8">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-9">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-10">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-11">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-12">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-13">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-14">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-15">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-16">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-17">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-18">_</div>
+                                        <div class="spike-cell spike-inactive" id="mid-19">_</div>
+                                    </div>
+
+                                    <div class="spike-row">
+                                        <div class="spike-cell spike-inactive" id="bot-0">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-1">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-2">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-3">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-4">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-5">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-6">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-7">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-8">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-9">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-10">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-11">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-12">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-13">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-14">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-15">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-16">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-17">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-18">_</div>
+                                        <div class="spike-cell spike-inactive" id="bot-19">_</div>
+                                    </div>
+                                </div>
+
+                                <div class="spike-round-info">
+                                    <p id="round-display">第 <span id="round-number">1</span> 回合</p>
+                                    <p id="mobile-display" style="display: none;">移动端从下一回合开始</p>
+                                </div>
+
+                                <div class="spike-controls">
+                                    <button id="prev-round" class="spike-button">上一回合</button>
+                                    <button id="next-round" class="spike-button">下一回合</button>
+                                </div>
+                            </div>
+
+                            <div id="lazy-tab" class="spike-tab-pane">
+                                <div class="spike-table-container">
+                                    <table id="min-op-table" class="spike-min-op-table">
+                                        <thead>
+                                            <tr>
+                                                <th>回合数</th>
+                                                <th>安全位置</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spike-explanation">
+                        <h3>使用说明</h3>
+                        <ul>
+                            <li>根据当前时间预测尖刺分布情况，当时间超过** : 10 : 00后显示后一小时的尖刺分布情况（自动更新）；</li>
+                            <li>三行分别代表顶部、中部和底部区域，触发区域为左侧、右侧或同时触发，忽略周边的小平台；</li>
+                            <li>"↑" 表示该位置有尖刺，"_" 表示该位置无尖刺，<span class="spike-safe-text">"★" 表示安全区，你可以在这里挂机15回合</span>；</li>
+                            <li>前3回合触发1组尖刺，第4-6回合触发2组（一行）尖刺，第7回合后触发3组（一行+半行）尖刺；</li>
+                            <li>完成13回合即可满TOME分，钻石显示40实际只给30个，另有20是成就奖励。</li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="world-map" class="page">
+            <div class="page-content-wrapper">
+                <div class="worldmap-container">
+                    <h2>World Map</h2>
+
+                    <div class="world-tabs">
+                        <div class="world-tab active" data-world="world1">World 1</div>
+                        <div class="world-tab" data-world="world2">World 2</div>
+                        <div class="world-tab" data-world="world3">World 3</div>
+                        <div class="world-tab" data-world="world4">World 4</div>
+                        <div class="world-tab" data-world="world5">World 5</div>
+                        <div class="world-tab" data-world="world6">World 6</div>
+                        <div class="world-tab" data-world="world7">World 7</div>
+                    </div>
+
+                    <div id="world-container">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="talent-tool" class="page">
+            <div class="page-content-wrapper">
+                <div class="talent-container">
+                    <h2 class="talent-title">Talent List</h2>
+                    
+                    <div class="talent-filters">
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-type="beginner">Beginner</button>
+                            <button class="filter-btn active" data-type="warrior">Warrior</button>
+                            <button class="filter-btn active" data-type="archer">Archer</button>
+                            <button class="filter-btn active" data-type="mage">Mage</button>
+                            <button class="filter-btn active" data-type="special">Special</button>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" id="talent-search" placeholder="Search by Talent ID or Name">
+                        </div>
+                    </div>
+                    
+                    <div class="talent-table-container">
+                        <table class="talent-table">
+                            <thead>
+                                <tr>
+                                    <th>talentId</th>
+                                    <th>icon</th>
+                                    <th>talentName</th>
+                                    <th>talentDescriptions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="talent-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination">
+                        <button id="prev-page" disabled>上一页</button>
+                        <span class="pagination-info" id="page-info">第 1 页，共 1 页</span>
+                        <button id="next-page" disabled>下一页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="items-tool" class="page">
+            <div class="page-content-wrapper">
+                <div class="items-container">
+                    <h2 class="items-title">物品查询</h2>
+                    
+                    <div class="items-tabs" id="items-tabs-container">
+                    </div>
+                    
+                    <div class="items-filters">
+                        <div class="filter-buttons" id="items-type-filter-buttons">
+                        </div>
+                        <div class="search-box">
+                            <input type="text" id="items-search" placeholder="Search by Name or Display Name">
+                        </div>
+                    </div>
+                    
+                    <div class="items-table-container">
+                        <table class="items-table">
+                            <thead id="items-table-head">
+                            </thead>
+                            <tbody id="items-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination">
+                        <button id="items-prev-page" disabled>上一页</button>
+                        <span class="pagination-info" id="items-page-info">第 1 页，共 1 页</span>
+                        <button id="items-next-page" disabled>下一页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pet-market" class="page">
+            <div class="page-content-wrapper">
+                <div class="pet-market-container">
+                    <h2 class="pet-market-title">宠物市场钻石预测</h2>
+                    
+                    <div class="pet-market-content">
+                        <div class="pet-market-left">
+                            <h3>未来10天钻石数量</h3>
+                            <div class="pet-market-table-container">
+                                <table class="spike-min-op-table">
+                                    <thead>
+                                        <tr>
+                                            <th>日期</th>
+                                            <th><img src="https://i.postimg.cc/d0qHwr2P/Premium-Gem.png" class="gem-icon" /> 钻石数量</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pet-market-table-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="pet-market-right">
+                            <h3>指定日期查询</h3>
+                            <div class="pet-market-controls">
+                                <div class="pet-market-date-picker">
+                                    <label for="pet-market-date">选择日期：</label>
+                                    <input type="date" id="pet-market-date">
+                                </div>
+                                
+                                <div class="pet-market-checkbox">
+                                    <label>
+                                        <input type="checkbox" id="pet-market-event">
+                                        活动期间多倍奖励 (x5)
+                                    </label>
+                                </div>
+                                
+                                <button id="pet-market-calculate" class="pet-market-btn">计算钻石数量</button>
+                            </div>
+                            
+                            <div class="pet-market-result" id="pet-market-result">
+                                <h4>计算结果</h4>
+                                <div class="pet-market-result-content">
+                                    <p>日期：<span id="result-date">-</span></p>
+                                    <p>随机数：<span id="result-random">-</span></p>
+                                    <p><img src="https://i.postimg.cc/d0qHwr2P/Premium-Gem.png" class="gem-icon" /> 钻石数量：<span id="result-gems">-</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pet-market-info">
+                        <div>最少获得10个，最多获得150个，活动多倍奖励下最大获得500个</div>
+                        <div>北京时间凌晨4:00前使用前一天日期，4:00后使用当天日期</div>
+                        <div>计算结果先乘以倍率再四舍五入</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="helpModal" class="boss-modal">
+        <div class="boss-modal-content">
+            <span class="boss-close">&times;</span>
+            <h2>游戏指南</h2>
+            <p>
+                每周四8点后刷新每周进度，刷新当日可进行两次挑战，进行一次左侧挑战获得每个难度BOSS首杀奖杯奖励，重置一次进行右侧挑战获取额外奖杯及BUFF获取，右侧挑战右上方为每次可获得的额外奖杯数，之后每日可以重置一次进行右侧挑战。</p>
+
+            <h2>奖杯兑换</h2>
+            <p>奖杯可在商店兑换各种奖品，以下是兑换列表：</p>
+            <p><span class="boss-blink-red boss-example">■ 强烈推荐</span><span class="boss-text-green boss-example">■ 喜欢就买</span><span
+                    class="boss-example">■ 不推荐</span></p>
+            <ul>
+                <li><span class="boss-blink-red">星星技能书Trophy(25奖杯兑换，重要，根据左侧挑战击杀数增加掉率)</span></li>
+                <li><span class="boss-blink-red">金表(30奖杯兑换，刷新每日)。</span></li>
+                <li><span class="boss-text-green">界面皮肤(15-60奖杯兑换，价位不同)</span></li>
+                <li><span class="boss-text-green">100x黄金食物(12奖杯兑换)</span></li>
+                <li><span class="boss-text-green">1000x雕像(12奖杯兑换)</span></li>
+                <li><span class="boss-text-green">银表(2奖杯兑换，调整日刷新时间)</span></li>
+                <li>25xKillroy骷髅(14奖杯兑换)</li>
+                <li>粉色海盗时装帽子(999奖杯兑换)</li>
+                <li>稻草人时装帽子(125奖杯兑换)</li>
+                <li>星星技能书Death(25奖杯兑换，不重要)</li>
+            </ul>
+
+            <h2>角色需求说明</h2>
+            <p>
+                角色需求处的数字代表你的第几个角色需要达成的目标，达到目标可以对BOSS造成更多的伤害。具体需求等级和击杀数可翻阅<a
+                    href="https://idleon.wiki/wiki/Weekly_Battles">IdleON WIKI</a>。<span class='boss-warning'>如果还没有开齐10个角色，那就不用管推荐的步骤，你自己随便选。</span>
+            </p>
+
+            <h2>挑战选项说明</h2>
+            <p>下方挑战数字1、2、3分别对应顶部选项，中间选项，底部选项，skip意味着本轮无法进行选择，可按skip按钮跳过。</p>
+
+            <h2>FR说明</h2>
+            <p>FR表示Full Rewind，当数字后有FR字样，选择后会从第一名角色开始。<span class='boss-warning'>这只是额外的标识让你检查是否有多选或者漏选前面的选项，你只需要按顺序选择1、2、3或者skip即可。</span>
+            </p>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
