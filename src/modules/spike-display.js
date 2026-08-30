@@ -444,20 +444,23 @@ function updateSpikeDisplay() {
 }
 
 function updateRow(rowId, rowData, safePositions) {
+  const row = document.getElementById(`row-${rowId}`);
+  if (!row) return;
+  row.innerHTML = "";
   for (let i = 0; i < 20; i++) {
-    const cell = document.getElementById(`${rowId}-${i}`);
+    const cell = document.createElement("div");
+    cell.className = "spike-cell";
     if (rowData[i] === "↑") {
       cell.textContent = "↑";
-      cell.className = "spike-cell spike-active";
+      cell.classList.add("spike-active");
+    } else if (safePositions.includes(i)) {
+      cell.textContent = "★";
+      cell.classList.add("spike-safe");
     } else {
-      if (safePositions.includes(i)) {
-        cell.textContent = "★";
-        cell.className = "spike-cell spike-safe";
-      } else {
-        cell.textContent = " ";
-        cell.className = "spike-cell spike-inactive";
-      }
+      cell.textContent = "";
+      cell.classList.add("spike-empty");
     }
+    row.appendChild(cell);
   }
 }
 

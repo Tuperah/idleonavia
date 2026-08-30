@@ -119,74 +119,9 @@
                                 </div>
 
                                 <div class="spike-display-container">
-                                    <div class="spike-row">
-                                        <div class="spike-cell spike-inactive" id="top-0">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-1">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-2">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-3">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-4">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-5">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-6">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-7">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-8">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-9">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-10">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-11">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-12">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-13">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-14">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-15">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-16">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-17">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-18">_</div>
-                                        <div class="spike-cell spike-inactive" id="top-19">_</div>
-                                    </div>
-
-                                    <div class="spike-row">
-                                        <div class="spike-cell spike-inactive" id="mid-0">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-1">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-2">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-3">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-4">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-5">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-6">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-7">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-8">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-9">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-10">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-11">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-12">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-13">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-14">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-15">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-16">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-17">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-18">_</div>
-                                        <div class="spike-cell spike-inactive" id="mid-19">_</div>
-                                    </div>
-
-                                    <div class="spike-row">
-                                        <div class="spike-cell spike-inactive" id="bot-0">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-1">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-2">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-3">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-4">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-5">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-6">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-7">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-8">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-9">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-10">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-11">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-12">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-13">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-14">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-15">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-16">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-17">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-18">_</div>
-                                        <div class="spike-cell spike-inactive" id="bot-19">_</div>
-                                    </div>
+                                    <div class="spike-row" id="row-top"></div>
+                                    <div class="spike-row" id="row-mid"></div>
+                                    <div class="spike-row" id="row-bot"></div>
                                 </div>
 
                                 <div class="spike-round-info">
@@ -342,7 +277,7 @@
                                     <thead>
                                         <tr>
                                             <th>日期</th>
-                                            <th><img src="https://i.postimg.cc/d0qHwr2P/Premium-Gem.png" class="gem-icon" /> 钻石数量</th>
+                                            <th><img src="/images/pet-market/Premium-Gem.png" class="gem-icon" /> 钻石数量</th>
                                         </tr>
                                     </thead>
                                     <tbody id="pet-market-table-body">
@@ -374,7 +309,7 @@
                                 <div class="pet-market-result-content">
                                     <p>日期：<span id="result-date">-</span></p>
                                     <p>随机数：<span id="result-random">-</span></p>
-                                    <p><img src="https://i.postimg.cc/d0qHwr2P/Premium-Gem.png" class="gem-icon" /> 钻石数量：<span id="result-gems">-</span></p>
+                                    <p><img src="/images/pet-market/Premium-Gem.png" class="gem-icon" /> 钻石数量：<span id="result-gems">-</span></p>
                                 </div>
                             </div>
                         </div>
