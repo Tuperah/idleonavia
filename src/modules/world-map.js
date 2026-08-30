@@ -57,7 +57,7 @@ function displayWorldData(
                         ${worldData
                           .map(
                             (data) => `
-                                    <tr onclick="updateFlashPoint(${data.index})">
+                                    <tr data-map-index="${data.index}">
                                         <td>${data.index}</td>
                                         <td>${data.mapDispName}</td>
                                         <td>${data.mapName}</td>
@@ -81,6 +81,19 @@ function displayWorldData(
             </div>
         </div>
     `;
+
+  // 为表格行添加点击事件（替代内联 onclick）
+  const tableBody = container.querySelector("tbody");
+  if (tableBody) {
+    tableBody.removeEventListener("click", tableBody._rowClickHandler);
+    tableBody._rowClickHandler = function (e) {
+      const row = e.target.closest("tr");
+      if (row && row.dataset.mapIndex !== undefined) {
+        updateFlashPoint(parseInt(row.dataset.mapIndex));
+      }
+    };
+    tableBody.addEventListener("click", tableBody._rowClickHandler);
+  }
 
   document.querySelectorAll(".world-tab").forEach((tab) => {
     tab.classList.remove("active");
@@ -178,8 +191,8 @@ function updateFlashPoint(mapId) {
       const scaleX = imageRect.width / originalWidth;
       const scaleY = imageRect.height / originalHeight;
       
-      const currentX = originalX * scaleX + (imageRect.left - containerRect.left) - 66 * scaleX;
-      const currentY = originalY * scaleY + (imageRect.top - containerRect.top) - 20 * scaleY;
+      const currentX = originalX * scaleX + (imageRect.left - containerRect.left) - 68 * scaleX;
+      const currentY = originalY * scaleY + (imageRect.top - containerRect.top) - 22 * scaleY;
       
       console.log("原图尺寸:", originalWidth, "x", originalHeight);
       console.log("原图坐标:", originalX, originalY);
