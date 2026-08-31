@@ -437,16 +437,4 @@ const TRANSLATOR = {
   "Bonus Dmg": "增加伤害"
 };
 
-    const BOSS_PIC = {
-  "Eclectic Lazlo": '<img src="/images/bosses/eclectic-lazlo.png" alt=""/>',
-  "Decibop Box": '<img src="/images/bosses/decibop-box.png" alt=""/>',
-  "Mutalius Cuboid": '<img src="/images/bosses/mutalius-cuboid.png" alt=""/>',
-  "Jupiteye Major": '<img src="/images/bosses/jupiteye-major.png" alt=""/>',
-  "The Nugenator": '<img src="/images/bosses/the-nugenator.png" alt=""/>',
-  "Fat Eggplonk": '<img src="/images/bosses/fat-eggplonk.png" alt=""/>',
-  "Mollo Gomm": '<img src="/images/bosses/mollo-gomm.png" alt=""/>',
-  "Unit T-31": '<img src="/images/bosses/unit-t-31.png" alt=""/>',
-  "SWR Containment": '<img src="/images/bosses/swr-containment.png" alt=""/>'
-};
-
-export { weeklyData, TRANSLATOR, BOSS_PIC };
+    export { weeklyData, TRANSLATOR };

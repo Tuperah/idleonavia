@@ -1,4 +1,4 @@
-import { weeklyData, TRANSLATOR, BOSS_PIC } from '../data/weekly-boss.js';
+import { weeklyData, TRANSLATOR } from '../data/weekly-boss.js';
 
 function initWeeklyBoss() {
   const weekSelect = document.getElementById("weekSelect");
@@ -102,11 +102,7 @@ function initWeeklyBoss() {
         miscRunText += `\n<span style="color: #ff6b6b; font-weight: bold;">当前方案比10角色少${diff}个奖杯，请切换为10角色版本</span>`;
       }
 
-      bossNameElement.innerHTML = bossNameText;
-
-      if (typeof BOSS_PIC !== "undefined" && BOSS_PIC[bossNameText]) {
-        bossNameElement.innerHTML += BOSS_PIC[bossNameText];
-      }
+      bossNameElement.innerHTML = bossNameText + '<img src="/images/bosses/' + bossNameText.toLowerCase().replace(/ /g, '-') + '.png" alt=""/>';
 
       let translatedReqs = characterReqs || "";
       let translatedSkullRun = skullsRunText || "";
