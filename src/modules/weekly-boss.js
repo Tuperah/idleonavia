@@ -102,7 +102,7 @@ function initWeeklyBoss() {
         miscRunText += `\n<span style="color: #ff6b6b; font-weight: bold;">当前方案比10角色少${diff}个奖杯，请切换为10角色版本</span>`;
       }
 
-      bossNameElement.innerHTML = bossNameText + '<img src="/images/bosses/' + bossNameText.toLowerCase().replace(/ /g, '-') + '.png" alt=""/>';
+      bossNameElement.innerHTML = bossNameText + '<img src="' + import.meta.env.BASE_URL + 'images/bosses/' + bossNameText.toLowerCase().replace(/ /g, '-') + '.png" alt=""/>';
 
       let translatedReqs = characterReqs || "";
       let translatedSkullRun = skullsRunText || "";

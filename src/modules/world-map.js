@@ -70,13 +70,13 @@ function displayWorldData(
             </div>
             <div class="world-right-panel">
                 <div class="flash-points-container"></div>
-                <img src="/images/world-map/w1.png" alt="World 1" class="world-map-image" data-world="1">
-                <img src="/images/world-map/w2.png" alt="World 2" class="world-map-image" data-world="2">
-                <img src="/images/world-map/w3.png" alt="World 3" class="world-map-image" data-world="3">
-                <img src="/images/world-map/w4.png" alt="World 4" class="world-map-image" data-world="4">
-                <img src="/images/world-map/w5.png" alt="World 5" class="world-map-image" data-world="5">
-                <img src="/images/world-map/w6.png" alt="World 6" class="world-map-image" data-world="6">
-                <img src="/images/world-map/w7.png" alt="World 7" class="world-map-image" data-world="7">
+                <img src="${import.meta.env.BASE_URL}images/world-map/w1.png" alt="World 1" class="world-map-image" data-world="1">
+                <img src="${import.meta.env.BASE_URL}images/world-map/w2.png" alt="World 2" class="world-map-image" data-world="2">
+                <img src="${import.meta.env.BASE_URL}images/world-map/w3.png" alt="World 3" class="world-map-image" data-world="3">
+                <img src="${import.meta.env.BASE_URL}images/world-map/w4.png" alt="World 4" class="world-map-image" data-world="4">
+                <img src="${import.meta.env.BASE_URL}images/world-map/w5.png" alt="World 5" class="world-map-image" data-world="5">
+                <img src="${import.meta.env.BASE_URL}images/world-map/w6.png" alt="World 6" class="world-map-image" data-world="6">
+                <img src="${import.meta.env.BASE_URL}images/world-map/w7.png" alt="World 7" class="world-map-image" data-world="7">
                 <div class="coordinates-display"></div>
             </div>
         </div>
